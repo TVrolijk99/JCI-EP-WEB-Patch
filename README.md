@@ -71,12 +71,7 @@ native graphic-editor en plugin-flow van JCI te breken.
 ## Installatie
 
 1. Pak de inhoud van `EP/` uit en overlay het op de bestaande EP-folder
-   van de controller — typisch via SCP / SFTP naar
-   `/var/www/public/sdcard/server/grweb/public/`.
-
-   ```text
-   patch/EP/grweb/public/   →   /var/www/public/sdcard/server/grweb/public/
-   ```
+   van de controller
 
 2. "Full deploy" in de "EP tool"
 
