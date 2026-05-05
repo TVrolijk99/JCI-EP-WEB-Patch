@@ -7,6 +7,8 @@ moderne look-and-feel in de stijl van de Johnson Controls EasyIO Neo
 System Supervisor en voegt een aantal eigen features toe — zonder de
 native graphic-editor en plugin-flow van JCI te breken.
 
+Voor bugs of extra gewenste functionaliteiten kan dit in deze git worden aangegeven.
+
 ## Inhoud
 
 - [Wat zit er in deze patch](#wat-zit-er-in-deze-patch)
