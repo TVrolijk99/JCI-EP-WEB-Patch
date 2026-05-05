@@ -1,0 +1,2933 @@
+/*
+ * JCI-EP-WEB-Patch — theme tokens + alle UI-styling van de patch.
+ * Copyright (C) 2026 Dymotica B.V. <info@dymotica.nl>
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * ----
+ * Light theme that mirrors the Johnson Controls EasyIO Neo System Supervisor UI.
+ */
+
+/* ---------- Roboto (variable font, latin + latin-ext) ---------- */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('../fonts/roboto/roboto-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+                 U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+                 U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('../fonts/roboto/roboto-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
+                 U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB,
+                 U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* ---------- Noto Sans (variable font) — used on the login screen ---------- */
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('../fonts/notosans/notosans-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+                 U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+                 U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('../fonts/notosans/notosans-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
+                 U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB,
+                 U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* ---------- Design tokens ---------- */
+:root {
+  --jci-bg: #ffffff;
+  --jci-page: #f4f6f8;
+  --jci-border: #e5e7eb;
+  --jci-border-strong: #d1d5db;
+  --jci-text: #2c3e50;
+  --jci-text-muted: #6b7280;
+  --jci-text-soft: #9ca3af;
+  --jci-section-label: #9aa1a9;
+  --jci-link: #2774f0;
+  --jci-link-hover: #1d4ed8;
+  --jci-blue: #2774f0;
+  --jci-blue-soft: #eaf2ff;
+  --jci-active-bg: #e8f1ff;
+  --jci-active-border: #2774f0;
+  --jci-row-hover: #ececef;
+  --jci-danger: #e23b3b;
+  --jci-warning: #f5b73e;
+  --jci-info: #5fc7e9;
+  --jci-success: #4cb863;
+  --jci-orange: #f08a3e;
+  --jci-shadow: 0 1px 2px rgba(15,23,42,.06), 0 1px 3px rgba(15,23,42,.04);
+  --jci-radius: 6px;
+  --jci-sidebar-w: 310px;
+  --jci-header-h: 53px;
+  --jci-gradient-h: 6px;
+  --jci-sidebar-pad-x: 16px;
+}
+
+/* ---------- Base typography ---------- */
+html, body {
+  font-family: 'Noto Sans', 'Helvetica Neue', Arial, sans-serif;
+  color: var(--jci-text);
+  background-color: var(--jci-page);
+  font-weight: 450;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+body { font-size: 13px; line-height: 1.45; }
+h1, h2, h3, h4, h5, h6 { font-family: inherit; color: var(--jci-text); font-weight: 450; }
+a { color: var(--jci-link); }
+a:hover, a:focus { color: var(--jci-link-hover); text-decoration: none; }
+.btn { font-family: inherit; font-weight: 450; }
+input, select, textarea, button { font-family: inherit; font-weight: 450; }
+
+/* ---------- Topbar / header ---------- */
+#header_panel {
+  background-color: var(--jci-bg) !important;
+  border-bottom: 1px solid var(--jci-border) !important;
+  box-shadow: none !important;
+  height: var(--jci-header-h) !important;
+  min-width: 0 !important;
+  width: 100% !important;
+  position: relative;
+  z-index: 100;
+}
+#header_panel::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: calc(-1 * var(--jci-gradient-h));
+  height: var(--jci-gradient-h);
+  background: url('../img/Gradient_Line.png') center / 100% 100% no-repeat;
+  pointer-events: none;
+}
+#header_container { width: 100%; height: 100%; margin: 0; position: relative; }
+.mt-menuSwitch {
+  position: absolute !important;
+  left: 0; top: 0;
+  padding: 0 !important;
+  width: var(--jci-header-h);
+  height: var(--jci-header-h);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  color: var(--jci-text-muted);
+  z-index: 1001;
+}
+.mt-menuSwitch:hover { color: var(--jci-text); background-color: #f4f6f8; }
+.mt-menuSwitch i.glyphicon,
+.mt-menuSwitch i.mdi,
+.mt-menuSwitch i[class*="mdi-"] { color: inherit; font-size: 22px; }
+
+#logo {
+  background-image: none !important;
+  width: auto !important;
+  height: var(--jci-header-h) !important;
+  float: none !important;
+  position: absolute;
+  left: var(--jci-header-h);
+  top: 0;
+  margin: 0 !important;
+  padding: 0 16px 0 11px;
+  display: flex !important;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Noto Sans', sans-serif !important;
+  font-size: 20px !important;
+  font-weight: 450 !important;
+  letter-spacing: 0.15px;
+  line-height: 24px;
+  color: var(--jci-text) !important;
+}
+/* Branding logo (admin-uploadable). Bounded to fit inside the 53px
+   header — max-height leaves vertical breathing room around the image. */
+#logo .jci-brand-logo {
+  max-height: 36px;
+  max-width: 200px;
+  height: auto;
+  width: auto;
+  object-fit: contain;
+  display: block;
+  flex: 0 0 auto;
+}
+#logo .jci-brand-title { white-space: nowrap; }
+#logo .jci-brand-edit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  margin-left: 4px;
+  padding: 0;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  color: var(--jci-text-soft);
+  cursor: pointer;
+  flex: 0 0 auto;
+}
+#logo .jci-brand-edit:hover {
+  background: #f1f3f6;
+  color: var(--jci-text);
+  border-color: var(--jci-border);
+}
+#logo .jci-brand-edit i { font-size: 16px; line-height: 1; }
+#title { display: none !important; }
+
+#right_menu {
+  position: absolute !important;
+  right: 0; top: 0;
+  height: var(--jci-header-h) !important;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding-right: 12px;
+  float: none !important;
+}
+.jci-topbar-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  color: var(--jci-text-muted);
+  font-size: 22px;
+  cursor: pointer;
+  border: 0;
+  background: transparent;
+  text-decoration: none;
+  position: relative;
+}
+.jci-topbar-icon:hover { background: #f1f3f6; color: var(--jci-text); }
+.jci-topbar-icon i:before { color: inherit !important; }
+.jci-topbar-icon.jci-bell-active { color: var(--jci-danger); }
+.jci-topbar-icon.jci-bell-active i { animation: jci-bell-shake 1.4s ease-in-out infinite; }
+.jci-topbar-icon.jci-bell-active::after {
+  content: attr(data-count);
+  position: absolute;
+  top: 0; left: 0;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 9px;
+  background: var(--jci-danger);
+  border: 2px solid var(--jci-bg);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  font-family: 'Noto Sans', sans-serif;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  box-sizing: border-box;
+}
+.mt-menuSwitch i:before { color: inherit !important; }
+
+/* User pill (admin) */
+#userBtn {
+  margin: 0 4px 0 8px !important;
+  float: none !important;
+  display: inline-flex !important;
+  align-items: center;
+}
+#userBtn > .btn,
+#userBtn > a.btn {
+  background: transparent !important;
+  border: 0 !important;
+  color: var(--jci-text) !important;
+  text-shadow: none !important;
+  padding: 4px 10px 4px 4px !important;
+  font-weight: 500;
+  font-size: 13px;
+  display: inline-flex !important;
+  align-items: center;
+  gap: 8px;
+  text-transform: none !important;
+  letter-spacing: 0;
+  box-shadow: none !important;
+}
+#userBtn > a.btn .icon-user,
+#userBtn > a.btn .icon-white { display: none; }
+#userBtn > a.btn::before {
+  content: attr(data-initial);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: var(--jci-blue);
+  color: #fff;
+  font-weight: 500;
+  font-size: 13px;
+  text-transform: uppercase;
+}
+/* Hide the second blue circle (caret-only dropdown toggle) */
+#userBtn > a.dropdown-toggle.btn-inverse,
+#userBtn.btn-group > .dropdown-toggle.btn-inverse {
+  display: none !important;
+}
+#userBtn .dropdown-toggle .caret { display: none !important; }
+#userBtn .dropdown-menu {
+  border: 1px solid var(--jci-border);
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(15,23,42,.10);
+  padding: 6px 0;
+  margin-top: 4px;
+}
+#userBtn .dropdown-menu > li > a {
+  color: var(--jci-text);
+  padding: 8px 14px;
+  font-size: 13px;
+}
+#userBtn .dropdown-menu > li > a:hover {
+  background: var(--jci-row-hover);
+  color: var(--jci-text);
+}
+#userBtn .dropdown-menu > li.divider {
+  background-color: var(--jci-border);
+}
+
+#utilityTools {
+  margin: 0 4px 0 0 !important;
+  float: none !important;
+  display: inline-flex !important;
+}
+#utilityTools .btn {
+  background: transparent !important;
+  border: 1px solid var(--jci-border) !important;
+  color: var(--jci-text-muted) !important;
+  text-shadow: none !important;
+  font-size: 12px !important;
+  padding: 4px 10px !important;
+  text-transform: none !important;
+  letter-spacing: 0 !important;
+  box-shadow: none !important;
+  border-radius: 6px !important;
+}
+#utilityTools .btn:hover { background: #f4f6f8 !important; color: var(--jci-text) !important; }
+#utilityTools .dropdown-menu {
+  border: 1px solid var(--jci-border);
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(15,23,42,.10);
+  padding: 6px 0;
+}
+
+/* Top languages select on signin */
+#languages select {
+  height: 32px;
+  border: 1px solid var(--jci-border);
+  border-radius: 6px;
+  background: #fff;
+  padding: 4px 8px;
+  font-family: inherit;
+  font-size: 12px;
+}
+
+/* ---------- Sidebar ---------- */
+.mt-left-sidebar {
+  background-color: var(--jci-bg) !important;
+  width: var(--jci-sidebar-w) !important;
+  left: 0 !important;
+  top: var(--jci-header-h) !important;
+  height: calc(100% - var(--jci-header-h)) !important;
+  border-right: 1px solid var(--jci-border) !important;
+  position: fixed !important;
+  overflow-y: auto;
+  overflow-x: hidden;
+  transition: transform .25s ease, width .25s ease !important;
+  z-index: 90;
+}
+.mt-left-sidebar:before { content: none !important; }
+.mt-left-sidebar.scrolled:before { content: none !important; }
+
+.mt-left-sidebar .sidebar-elements {
+  margin: 0;
+  padding: 4px 0;
+  list-style: none;
+  display: block;
+}
+.mt-left-sidebar .sidebar-elements > li {
+  background: transparent !important;
+  border: 0 !important;
+  display: block !important;
+  padding: 0;
+  margin: 0;
+}
+.mt-left-sidebar .sidebar-elements > li > a {
+  display: flex !important;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px !important;
+  margin: 0 10px 5px !important;
+  border-radius: 4px !important;
+  text-align: left !important;
+  font-size: 14px;
+  line-height: 20px !important;
+  color: var(--jci-text) !important;
+  text-decoration: none !important;
+  border-left: 0 !important;
+  font-weight: 400;
+  white-space: nowrap;
+  transition: background-color .18s ease, color .18s ease;
+}
+.mt-left-sidebar .sidebar-elements > li > a:hover {
+  background-color: var(--jci-row-hover) !important;
+  color: var(--jci-text) !important;
+}
+/* Right-side chevron for expandable items (Services / Utilities).
+   Tree groups (.jci-tree-group) already have their own internal caret —
+   exclude them so we don't render a duplicate. */
+.mt-left-sidebar .sidebar-elements > li.has-children:not(.jci-tree-group) > a::after {
+  content: "\F0140"; /* mdi-chevron-down */
+  font-family: "Material Design Icons";
+  margin-left: auto;
+  font-size: 18px;
+  color: var(--jci-text-soft);
+  transition: transform .18s ease;
+  flex-shrink: 0;
+}
+.mt-left-sidebar .sidebar-elements > li.has-children:not(.jci-tree-group).expanded > a::after {
+  transform: rotate(180deg);
+}
+.mt-left-sidebar .sidebar-elements > li > a > i.glyphicon,
+.mt-left-sidebar .sidebar-elements > li > a > i.mdi,
+.mt-left-sidebar .sidebar-elements > li > a > i[class*="mdi-"],
+.mt-left-sidebar .sidebar-elements > li > a > i[class*="icon-"] {
+  color: var(--jci-text-muted) !important;
+  font-size: 18px !important;
+  width: 20px;
+  text-align: center;
+  flex-shrink: 0;
+}
+.mt-left-sidebar .sidebar-elements > li > a > i[class*="mdi-"]:before,
+.mt-left-sidebar .sidebar-elements > li > a > i[class*="icon-"]:before {
+  color: inherit !important;
+  font-size: inherit !important;
+}
+.mt-left-sidebar .sidebar-elements > li > a span {
+  display: inline-block !important;
+  margin: 0 !important;
+}
+/* Hover/active live op de <a> zelf, niet op de <li> wrapper */
+.mt-left-sidebar .sidebar-elements > li:hover {
+  background-color: transparent !important;
+}
+.mt-left-sidebar .sidebar-elements > li.active > a {
+  background-color: var(--jci-active-bg) !important;
+  color: var(--jci-link) !important;
+  font-weight: 400 !important;
+  /* Lock the box model to match the non-active row exactly so nothing shifts */
+  padding: 9px 12px !important;
+  margin: 0 10px 5px !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  outline: 0 !important;
+  min-height: 0 !important;
+  height: auto !important;
+  line-height: 20px !important;
+}
+.mt-left-sidebar .sidebar-elements > li.active > a > i.glyphicon,
+.mt-left-sidebar .sidebar-elements > li.active > a > i.mdi,
+.mt-left-sidebar .sidebar-elements > li.active > a > i[class*="mdi-"],
+.mt-left-sidebar .sidebar-elements > li.active > a > i[class*="icon-"] {
+  color: var(--jci-link) !important;
+  /* Lock icon dimensions identical to non-active state */
+  font-size: 18px !important;
+  width: 20px !important;
+  line-height: 20px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* alarms bell that goes red when there are active alarms */
+.mt-left-sidebar .sidebar-elements > li > a > i.glyphicon-bell[style*="color"],
+.mt-left-sidebar .sidebar-elements > li > a > i.mdi-bell[style*="color"],
+.mt-left-sidebar .sidebar-elements > li > a > i.alarm-active {
+  color: var(--jci-danger) !important;
+  animation: jci-bell-shake 1.4s ease-in-out infinite;
+}
+#alarmBell.jci-bell-active i { color: var(--jci-danger) !important; }
+#alarmBell.jci-bell-active i:before { color: inherit !important; }
+@keyframes jci-bell-shake {
+  0%, 100% { transform: rotate(0); }
+  20% { transform: rotate(8deg); }
+  40% { transform: rotate(-7deg); }
+  60% { transform: rotate(5deg); }
+  80% { transform: rotate(-4deg); }
+}
+
+/* Section labels (FEATURE / SPACE) — purely visual, no toggle */
+.jci-sidebar-section {
+  list-style: none !important;
+  background: transparent !important;
+  border: 0 !important;
+  padding: 10px var(--jci-sidebar-pad-x) 4px !important;
+  font-size: 12px !important;
+  letter-spacing: 0.6px;
+  font-weight: 400 !important;
+  color: var(--jci-section-label) !important;
+  text-transform: uppercase;
+  display: block !important;
+  cursor: default;
+  user-select: none;
+}
+.jci-sidebar-section:hover { background: transparent !important; }
+.jci-sidebar-section:first-child { padding-top: 14px !important; }
+
+/* Horizontal divider above the SPACE section */
+.jci-sidebar-section.jci-section-space {
+  position: relative;
+  margin-top: 22px !important;   /* 10px + 1px line + 11px above label */
+}
+.jci-sidebar-section.jci-section-space::before {
+  content: '';
+  position: absolute;
+  top: -11px;                    /* 11px above the label */
+  left: 10px;
+  right: 10px;
+  height: 1px;
+  background: var(--jci-border);
+}
+
+/* In-place expandable submenu (Services, etc.) — no right-side chevron */
+.mt-left-sidebar .sidebar-elements > li.has-children > a::after { content: none; }
+/* KILL the legacy hover-flyout. Any <ul> under a sidebar <li> renders inline,
+   never as a position:fixed dark gray panel on the right. */
+.mt-left-sidebar .sidebar-elements > li > ul,
+.mt-left-sidebar .sidebar-elements > li:hover > ul,
+.mt-left-sidebar .sidebar-elements > li > ul.sub-menu,
+.mt-left-sidebar .sidebar-elements > li:hover > ul.sub-menu {
+  position: static !important;
+  left: auto !important;
+  top: auto !important;
+  height: auto !important;
+  width: 100% !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none;
+  table-layout: auto !important;
+  z-index: auto !important;
+  display: none !important;
+}
+/* Show only when the parent <li> is explicitly expanded (Services / Utilities) */
+.mt-left-sidebar .sidebar-elements > li.expanded > ul,
+.mt-left-sidebar .sidebar-elements > li.expanded > ul.sub-menu,
+.mt-left-sidebar .sidebar-elements > li.expanded:hover > ul {
+  display: block !important;
+  animation: jci-slide-down .2s ease;
+  transform-origin: top center;
+}
+@keyframes jci-slide-down {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.mt-left-sidebar .sidebar-elements > li > ul.sub-menu > li.title { display: none !important; }
+.mt-left-sidebar .sidebar-elements > li > ul.sub-menu .nav-items {
+  display: block !important;
+  height: auto !important;
+}
+.mt-left-sidebar .sidebar-elements > li > ul.sub-menu .nano,
+.mt-left-sidebar .sidebar-elements > li > ul.sub-menu .nano-content {
+  position: static !important;
+  height: auto !important;
+  overflow: visible !important;
+}
+.mt-left-sidebar .sidebar-elements > li > ul.sub-menu .nano-content {
+  padding: 0 !important;
+  right: 0 !important;
+}
+.mt-left-sidebar .sidebar-elements > li > ul.sub-menu .nav {
+  background: transparent !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none;
+}
+.mt-left-sidebar .sidebar-elements > li > ul.sub-menu .nav > li > a {
+  color: var(--jci-text) !important;
+  padding: 8px 12px 8px 56px !important;   /* indent under Services / Trend / Utilities */
+  margin: 0 10px 5px !important;
+  border-radius: 4px !important;
+  font-size: 14px;
+  line-height: 20px !important;
+  font-weight: 400;
+  display: block;
+  text-decoration: none !important;
+  transition: background-color .18s ease, color .18s ease;
+}
+.mt-left-sidebar .sidebar-elements > li > ul.sub-menu .nav > li > a:hover {
+  background-color: var(--jci-row-hover) !important;
+  color: var(--jci-text) !important;
+}
+.mt-left-sidebar .sidebar-elements > li > ul.sub-menu .nav > li.active > a,
+.mt-left-sidebar .sidebar-elements > li > ul.sub-menu .nav > li > a.active {
+  background-color: var(--jci-active-bg) !important;
+  color: var(--jci-link) !important;
+  font-weight: 400 !important;
+}
+.mt-left-sidebar .sidebar-elements > li > ul.sub-menu .nav > li.subtitle {
+  color: var(--jci-text-soft);
+  padding: 8px 16px 4px 32px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border: 0;
+}
+/* Utilities sidebar item — kill legacy topbar float/margin from user.css */
+.mt-left-sidebar #utilityTools.utilityM,
+.mt-left-sidebar .sidebar-elements > li#utilityTools {
+  margin: 0 !important;
+  float: none !important;
+  width: auto !important;
+  display: block !important;
+  position: static !important;
+}
+/* Utilities sub-menu (was a Bootstrap dropdown, now inline like Services) */
+.mt-left-sidebar .sidebar-elements > li > ul.sub-menu ul.dropdown-menu {
+  position: static !important;
+  display: block !important;
+  float: none !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  min-width: 0;
+  left: auto !important;
+  right: auto !important;
+  top: auto !important;
+}
+.mt-left-sidebar .sidebar-elements > li > ul.sub-menu .nav > li.divider {
+  height: 1px;
+  background: var(--jci-border);
+  margin: 4px 16px;
+  padding: 0;
+  list-style: none;
+}
+
+/* SPACE tree (graphics nav) — recursive nested folder structure */
+.jci-space-marker { display: none !important; }
+
+/* Tree rows — flexbox layout with caret + icon + label */
+#leftXmlMenu .jci-tree-row {
+  display: flex !important;
+  align-items: center;
+  gap: 8px;
+  padding: 3px 12px !important;
+  margin: 0 10px !important;
+  border-radius: 4px !important;
+  text-decoration: none !important;
+  color: var(--jci-text) !important;
+  font-size: 14px !important;
+  line-height: 20px !important;
+  font-weight: 400 !important;
+  cursor: pointer;
+  border-left: 0 !important;
+  white-space: nowrap;
+  user-select: none;
+  position: relative;
+  transition: background-color .18s ease, color .18s ease;
+}
+#leftXmlMenu .jci-tree-row:hover {
+  background-color: var(--jci-row-hover) !important;
+  color: var(--jci-text) !important;
+}
+#leftXmlMenu .jci-tree-leaf.active > .jci-tree-row,
+#leftXmlMenu .jci-tree-group.active > .jci-tree-row {
+  background-color: var(--jci-active-bg) !important;
+  color: var(--jci-link) !important;
+  font-weight: 400 !important;
+}
+
+/* Caret (left of folder icon) — filled triangle, 50% larger than the body text */
+#leftXmlMenu .jci-tree-caret,
+#leftXmlMenu .jci-tree-caret-spacer {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 18px !important;
+  height: 18px;
+  flex-shrink: 0;
+  font-size: 21px !important;
+  color: var(--jci-text-soft) !important;
+  transition: transform .18s ease;
+  background: transparent;
+}
+#leftXmlMenu .jci-tree-caret:before,
+#leftXmlMenu .jci-tree-icon:before { color: inherit !important; font-size: inherit !important; }
+#leftXmlMenu .jci-tree-group.expanded > .jci-tree-row > .jci-tree-caret { transform: rotate(90deg); }
+
+/* Icon (folder / image) */
+#leftXmlMenu .jci-tree-icon {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  width: auto !important;
+  font-size: 18px !important;
+  color: var(--jci-text-muted) !important;
+  flex-shrink: 0;
+}
+#leftXmlMenu .jci-tree-leaf.active > .jci-tree-row > .jci-tree-icon,
+#leftXmlMenu .jci-tree-group.active > .jci-tree-row > .jci-tree-icon { color: var(--jci-link) !important; }
+
+#leftXmlMenu .jci-tree-label { flex: 1; min-width: 0; }
+
+/* Children container — collapsed by default, shown on .expanded */
+#leftXmlMenu ul.jci-tree-children {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  display: none;
+}
+#leftXmlMenu .jci-tree-group.expanded > ul.jci-tree-children {
+  display: block;
+  animation: jci-slide-down .2s ease;
+  transform-origin: top center;
+}
+
+/* Each tree li resets its container's li styling */
+#leftXmlMenu .jci-tree-leaf,
+#leftXmlMenu .jci-tree-group {
+  list-style: none;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  display: block !important;
+}
+
+/* Indent per nesting level (covers up to 5 levels deep) */
+#leftXmlMenu .jci-tree-children > li > .jci-tree-row { padding-left: 24px !important; }
+#leftXmlMenu .jci-tree-children .jci-tree-children > li > .jci-tree-row { padding-left: 40px !important; }
+#leftXmlMenu .jci-tree-children .jci-tree-children .jci-tree-children > li > .jci-tree-row { padding-left: 56px !important; }
+#leftXmlMenu .jci-tree-children .jci-tree-children .jci-tree-children .jci-tree-children > li > .jci-tree-row { padding-left: 72px !important; }
+
+/* ---------- Main content shift ---------- */
+@media only screen and (min-device-width: 768px) {
+  .container-fluid {
+    padding-left: calc(var(--jci-sidebar-w) + 16px) !important;
+    padding-top: calc(var(--jci-header-h) + 16px);
+    padding-right: 16px;
+  }
+  #title { text-align: left; padding-left: 16px; }
+}
+
+/* When sidebar is collapsed via hamburger */
+body.jci-sidebar-collapsed .mt-left-sidebar { transform: translateX(calc(-1 * var(--jci-sidebar-w))); }
+body.jci-sidebar-collapsed .container-fluid { padding-left: 16px !important; }
+
+/* ---------- Generic UI primitives ---------- */
+.btn {
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: 0;
+  text-transform: none;
+  text-shadow: none;
+  border-radius: var(--jci-radius);
+  border: 1px solid transparent;
+  padding: 6px 14px;
+  background-image: none;
+}
+.btn-primary,
+.btn-info {
+  background: var(--jci-blue) !important;
+  background-color: var(--jci-blue) !important;
+  border-color: var(--jci-blue) !important;
+  color: #fff !important;
+}
+.btn-primary:hover, .btn-primary:focus,
+.btn-info:hover, .btn-info:focus {
+  background: var(--jci-link-hover) !important;
+  background-color: var(--jci-link-hover) !important;
+  border-color: var(--jci-link-hover) !important;
+  color: #fff !important;
+}
+.btn-default {
+  background: #fff;
+  border-color: var(--jci-border);
+  color: var(--jci-text);
+}
+.btn-default:hover, .btn-default:focus {
+  background: var(--jci-row-hover);
+  border-color: var(--jci-border-strong);
+  color: var(--jci-text);
+}
+.btn-default.active, .btn-default:active,
+.open > .dropdown-toggle.btn-default {
+  background: var(--jci-blue-soft);
+  border-color: var(--jci-blue);
+  color: var(--jci-link);
+  box-shadow: none;
+}
+.btn-success {
+  background: var(--jci-success); border-color: var(--jci-success); color: #fff;
+}
+.btn-warning {
+  background: var(--jci-warning); border-color: var(--jci-warning); color: #fff;
+}
+.btn-danger {
+  background: var(--jci-danger); border-color: var(--jci-danger); color: #fff;
+}
+.btn:focus, .btn:active:focus, .btn.active:focus { outline: 0; }
+
+input, select, textarea {
+  font-family: inherit;
+}
+.form-control {
+  border-radius: var(--jci-radius);
+  border-color: var(--jci-border);
+  box-shadow: none;
+}
+.form-control:focus {
+  border-color: var(--jci-blue);
+  box-shadow: 0 0 0 2px rgba(39,116,240,0.15);
+}
+
+.modal-content, .modal {
+  border-radius: 8px;
+}
+.dropdown-menu {
+  border: 1px solid var(--jci-border);
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(15,23,42,.10);
+}
+
+/* ---------- Alarm Manager ---------- */
+.theme-h31 #myAlarmContainer {
+  background: var(--jci-page);
+  padding: 0;
+  margin-top: 0;
+}
+.theme-h31 #myAlarmContainer .header {
+  margin: 16px 16px 0 16px;
+  padding: 0 16px;
+  background: var(--jci-bg);
+  border: 1px solid var(--jci-border);
+  border-radius: 8px;
+  box-shadow: var(--jci-shadow);
+}
+.theme-h31 .nav-tabs {
+  border-bottom: 1px solid var(--jci-border) !important;
+  margin: 0;
+  padding: 0;
+  min-height: 42px;
+}
+.theme-h31 .nav-tabs > li > a {
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: var(--jci-text-muted);
+  padding: 12px 16px;
+  font-weight: 400;
+  margin: 0;
+}
+.theme-h31 .nav-tabs > li > a:hover {
+  background: var(--jci-row-hover) !important;
+  color: var(--jci-text);
+  border: 0 !important;
+}
+.theme-h31 .nav-tabs > li.active > a,
+.theme-h31 .nav-tabs > li.active > a:hover,
+.theme-h31 .nav-tabs > li.active > a:focus {
+  background: transparent !important;
+  color: var(--jci-link) !important;
+  border: 0 !important;
+  box-shadow: inset 0 -2px 0 var(--jci-link);
+  font-weight: 500;
+}
+.theme-h31 .nav-tabs > li > a .glyphicon { display: none; }
+.theme-h31 .nav-tabs .pull-right.logo-version,
+.theme-h31 .nav-tabs > a.pull-right { display: none !important; }
+
+/* Stats cards row injected above the toolbar */
+.jci-alarm-stats {
+  display: grid;
+  grid-template-columns: minmax(280px, 1fr) minmax(360px, 2fr);
+  gap: 16px;
+  padding: 16px;
+  background: var(--jci-page);
+}
+.jci-stat-card {
+  background: var(--jci-bg);
+  border: 1px solid var(--jci-border);
+  border-radius: 8px;
+  padding: 16px 20px;
+  box-shadow: var(--jci-shadow);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  position: relative;
+}
+.jci-stat-card .jci-stat-label {
+  font-size: 11px;
+  letter-spacing: 0.6px;
+  color: var(--jci-section-label);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  display: flex; align-items: center; gap: 6px;
+}
+.jci-stat-card .jci-stat-label .lic { font-size: 13px; }
+.jci-stat-card .jci-stat-body { flex: 1; }
+.jci-stat-card .jci-stat-value {
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--jci-text);
+  line-height: 1;
+}
+.jci-stat-card .jci-stat-icon {
+  width: 80px; height: 80px;
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 40px;
+  color: var(--jci-blue);
+}
+.jci-stat-card .jci-stat-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.jci-severity-row {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 10px;
+}
+.jci-severity-pill {
+  font-size: 11px;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: var(--jci-text-muted);
+  position: relative;
+  padding-left: 10px;
+}
+.jci-severity-pill::before {
+  content: "";
+  position: absolute; left: 0; top: 2px;
+  width: 3px; height: 12px; border-radius: 2px;
+}
+.jci-severity-pill.critical::before { background: var(--jci-danger); }
+.jci-severity-pill.high::before     { background: var(--jci-orange); }
+.jci-severity-pill.medium::before   { background: var(--jci-warning); }
+.jci-severity-pill.low::before      { background: var(--jci-info); }
+.jci-severity-pill .jci-sev-count {
+  display: block;
+  font-size: 14px;
+  color: var(--jci-text);
+  font-weight: 500;
+  margin-top: 2px;
+}
+.jci-severity-bar {
+  display: flex;
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--jci-border);
+}
+.jci-severity-bar > span { display: block; height: 100%; }
+.jci-severity-bar > span.critical { background: var(--jci-danger); }
+.jci-severity-bar > span.high     { background: var(--jci-orange); }
+.jci-severity-bar > span.medium   { background: var(--jci-warning); }
+.jci-severity-bar > span.low      { background: var(--jci-info); }
+
+/* Alarm panel + table — padding-left/top/right are owned by the sidebar-aware
+   rule further down (body.jci-alarm-page #myAlarmContainer). The legacy rule
+   here used to hardcode `var(--jci-sidebar-w) + 16px` which beat the new
+   var(--jci-content-left) rule on specificity, so the container stayed
+   indented when the sidebar collapsed. Stripped to only what's still needed. */
+.theme-h31 .container-fluid#myAlarmContainer {
+  /* intentionally empty — see body.jci-alarm-page #myAlarmContainer */
+}
+#alarm_container .panel,
+.theme-h31 #alarm_container .panel {
+  background: var(--jci-bg);
+  border: 1px solid var(--jci-border);
+  border-radius: 8px;
+  box-shadow: var(--jci-shadow);
+  min-height: 400px;
+  margin: 0 16px 16px 16px;
+  padding: 0 !important;
+}
+.theme-h31 .table-toolbar {
+  background: var(--jci-bg);
+  margin: 0 16px;
+  border: 1px solid var(--jci-border);
+  border-bottom: 0;
+  border-radius: 8px 8px 0 0;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.theme-h31 .table-toolbar #controls_top { float: none !important; margin-left: auto; }
+.theme-h31 .table-toolbar #search_tab,
+.theme-h31 .table-toolbar #dateselector_tab {
+  float: none !important;
+  margin: 0;
+  padding: 0;
+}
+.theme-h31 #controls_top .btn {
+  border: 1px solid var(--jci-border);
+  background: #fff;
+  color: var(--jci-text-muted);
+  margin-left: 4px;
+}
+.theme-h31 #controls_top .btn:hover { color: var(--jci-text); background: var(--jci-row-hover); }
+.theme-h31 #controls_top .btn.active { background: var(--jci-blue-soft); border-color: var(--jci-blue); color: var(--jci-link); }
+.theme-h31 #controls_top .btn .glyphicon { color: inherit; }
+.theme-h31 #search input[type="text"], .theme-h31 .search input { border-radius: 6px; }
+
+.theme-h31 #alarm_container .panel { box-shadow: var(--jci-shadow); border-radius: 0 0 8px 8px; border-top: 0; margin-top: 0; }
+.theme-h31 #alarm_table { margin: 0; }
+.theme-h31 #alarm_table > thead > tr > th {
+  background: #fafbfc;
+  border-top: 0 !important;
+  border-bottom: 1px solid var(--jci-border) !important;
+  color: var(--jci-text-muted);
+  font-weight: 500;
+  font-size: 12px;
+  text-transform: none;
+  letter-spacing: 0;
+  padding: 10px 14px;
+}
+.theme-h31 #alarm_table > tbody > tr > td {
+  border-top: 1px solid var(--jci-border) !important;
+  padding: 12px 14px;
+  vertical-align: middle;
+  color: var(--jci-text);
+  font-size: 13px;
+}
+.theme-h31 #alarm_table > tbody > tr:hover { background-color: var(--jci-row-hover); }
+.theme-h31 .label.tags {
+  border-radius: 999px;
+  padding: 2px 10px;
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.2px;
+}
+.theme-h31 .label-danger { background: #fdecec; color: var(--jci-danger); border: 1px solid #f6c2c2; }
+.theme-h31 .label-warning { background: #fff4dc; color: #b07a18; border: 1px solid #f3d691; }
+.theme-h31 .label-info { background: #e6f6fb; color: #1c7895; border: 1px solid #b9e2ee; }
+.theme-h31 .label-primary { background: #e8f1ff; color: var(--jci-link); border: 1px solid #b9d4ff; }
+.theme-h31 .label-success { background: #e9f6ec; color: #2c7a3d; border: 1px solid #b3dfbe; }
+.theme-h31 .col6 .btn { border-radius: 6px; padding: 4px 8px; }
+.theme-h31 .table-pagination {
+  margin: 16px 16px 16px 16px;
+  padding: 12px 14px;
+  border: 1px solid var(--jci-border);
+  background: var(--jci-bg);
+  border-radius: 8px;
+  box-shadow: var(--jci-shadow);
+  display: flex; align-items: center; gap: 16px;
+}
+
+/* hide the old AlarmDB logo banner shown on top */
+#myAlarmContainer .header img.logo,
+#myAlarmContainer .header .logo-version,
+#myAlarmContainer .header > a.pull-right { display: none !important; }
+
+/* ---------- Login page (signin) ---------- */
+body.jci-signin {
+  --jci-signin-blue:       rgb(21, 46, 169);
+  --jci-signin-btn:        rgb(21, 46, 169);
+  --jci-signin-btn-hover:  rgb(15, 32, 119);
+  background: var(--jci-page);
+  background-image: none !important;
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Noto Sans', 'Helvetica Neue', Arial, sans-serif;
+}
+body.jci-signin,
+body.jci-signin h1, body.jci-signin h2,
+body.jci-signin label, body.jci-signin input, body.jci-signin button,
+body.jci-signin .form-signin {
+  font-family: 'Noto Sans', 'Helvetica Neue', Arial, sans-serif;
+}
+body.jci-signin .container {
+  max-width: none;
+  padding: 0;
+  margin: 0;
+  width: 100% !important;
+  min-height: 100vh;
+}
+.jci-signin-layout {
+  display: grid;
+  grid-template-columns: minmax(410px, 510px) 1fr;
+  min-height: 100vh;
+  background: #fff;
+}
+.jci-signin-pane {
+  background: #fff;
+  padding: 28px 16px 18px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.jci-signin-logo {
+  width: 130px;
+  height: auto;
+  align-self: flex-end;
+  margin: 0 0 22px 0;
+}
+.jci-signin-pane h1 {
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 20px;
+  font-weight: 450;
+  letter-spacing: 0.15px;
+  line-height: 24px;
+  color: rgb(21, 46, 169);
+  margin: 0 0 18px;
+}
+.jci-signin-pane h2 {
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 22px;
+  font-weight: 450;
+  letter-spacing: 0.25px;
+  line-height: 26px;
+  color: var(--jci-text);
+  margin: 0 0 20px;
+}
+.jci-signin-pane label.field-label {
+  display: block;
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 350;
+  letter-spacing: normal;
+  line-height: 20px;
+  color: rgba(0, 0, 0, 0.68);
+  margin-bottom: 6px;
+}
+.jci-signin-pane .form-signin {
+  background: transparent;
+  margin: 0;
+  padding: 0;
+  box-shadow: none;
+  max-width: none;
+}
+.jci-signin-pane .form-signin input[type="text"],
+.jci-signin-pane .form-signin input[type="password"] {
+  width: 100%;
+  height: 40px;
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  border: 1px solid var(--jci-border);
+  border-radius: 4px;
+  padding: 10px 12px;
+  margin-bottom: 14px;
+  box-sizing: border-box;
+  background: #fff;
+  color: var(--jci-text);
+}
+.jci-signin-pane .form-signin input:focus {
+  border-color: var(--jci-signin-blue);
+  outline: 0;
+  box-shadow: 0 0 0 2px rgba(21, 46, 169, 0.15);
+}
+.jci-signin-pane .form-signin .input-prepend,
+.jci-signin-pane .form-signin .input-append {
+  position: relative;
+  width: 100%;
+}
+.jci-signin-pane .form-signin .input-prepend input,
+.jci-signin-pane .form-signin .input-append input { padding-right: 40px; width: 100%; }
+.jci-signin-pane .form-signin #show-password {
+  position: absolute;
+  right: 6px; top: 8px;
+  width: 24px; height: 24px;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  border-radius: 4px;
+  color: var(--jci-text-muted);
+}
+.jci-signin-pane .form-signin #show-password:hover { color: var(--jci-text); background: var(--jci-row-hover); }
+.jci-signin-pane .form-signin .checkbox {
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 13px;
+  color: var(--jci-text-muted);
+  margin: 6px 0 34px;
+}
+.jci-signin-pane .form-signin button#signinBtn,
+body.jci-signin button#signinBtn.btn-primary {
+  width: 100%;
+  height: 35px;
+  background: var(--jci-signin-btn) !important;
+  background-color: var(--jci-signin-btn) !important;
+  color: #fff !important;
+  border: 1px solid var(--jci-signin-btn) !important;
+  border-radius: 4px;
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 450;
+  text-transform: none;
+  letter-spacing: 0;
+}
+.jci-signin-pane .form-signin button#signinBtn:hover,
+.jci-signin-pane .form-signin button#signinBtn:focus,
+body.jci-signin button#signinBtn.btn-primary:hover,
+body.jci-signin button#signinBtn.btn-primary:focus {
+  background: var(--jci-signin-btn-hover) !important;
+  background-color: var(--jci-signin-btn-hover) !important;
+  border-color: var(--jci-signin-btn-hover) !important;
+}
+.jci-signin-pane .form-signin .alert {
+  font-size: 12px;
+  padding: 8px 10px;
+  border-radius: 4px;
+  background: #fdecec;
+  color: var(--jci-danger);
+  border: 1px solid #f6c2c2;
+  margin-bottom: 12px;
+}
+.jci-signin-footer {
+  margin-top: auto;
+  padding-top: 16px;
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 11px;
+  color: var(--jci-text-soft);
+}
+.jci-signin-image {
+  background: url('../img/login-bg-image.png') center center / cover no-repeat;
+}
+@media (max-width: 700px) {
+  .jci-signin-layout { grid-template-columns: 1fr; }
+  .jci-signin-image { display: none; }
+}
+
+/* ---------- Right alarm sidebar (kept hidden by default) ---------- */
+.am-right-sidebar { background-color: var(--jci-bg) !important; border-left: 1px solid var(--jci-border); }
+.am-right-sidebar .tab-navigation .nav-tabs { background-color: #fafbfc; }
+.am-right-sidebar h2 { color: var(--jci-text); border-bottom-color: var(--jci-border); }
+
+/* ---------- Hide AlarmDB's old dark theme just in case ---------- */
+body.theme-freeboard, body.theme-gost {
+  background-color: var(--jci-page) !important;
+  color: var(--jci-text) !important;
+}
+
+/* Mobile hamburger toggle */
+@media only screen and (max-device-width: 767px) {
+  .mt-menuSwitch { display: flex !important; }
+  .mt-left-sidebar {
+    transform: translateX(calc(-1 * var(--jci-sidebar-w)));
+  }
+  .mt-left-sidebar.mt-left-sidebar-on { transform: translateX(0); }
+  .container-fluid { padding-left: 16px !important; padding-top: calc(var(--jci-header-h) + 16px) !important; }
+}
+
+/* Bootstrap-datetimepicker (Stefan Petre) — used by alarm + trend pages */
+.datetimepicker {
+  font-family: 'Roboto', sans-serif !important;
+  border: 1px solid var(--jci-border) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 6px 18px rgba(15,23,42,.12) !important;
+}
+.datetimepicker table tr td.active,
+.datetimepicker table tr td.active:hover,
+.datetimepicker table tr td.active.disabled,
+.datetimepicker table tr td.active.disabled:hover {
+  background-color: var(--jci-blue) !important;
+  background-image: none !important;
+  color: #fff !important;
+  border-radius: 4px;
+  text-shadow: none !important;
+}
+.datetimepicker table tr td.today { background: var(--jci-blue-soft) !important; color: var(--jci-link) !important; }
+.datetimepicker table tr td.day:hover { background: var(--jci-row-hover) !important; }
+
+/* ============================================================
+   Native alarm manager (jci-alarm-manager.js) — replaces the
+   legacy AlarmDB plugin UI.
+   ============================================================ */
+
+/* Severity tokens (project spec): critical=red, high=dark orange,
+   medium=light orange, low=yellow, normal=blue (back-to-normal event). */
+:root {
+  --sev-critical: #e23b3b;
+  --sev-high:     #d96a1a;   /* dark orange */
+  --sev-medium:   #f0a040;   /* light orange */
+  --sev-low:      #f5d800;   /* yellow */
+  --sev-normal:   #2774f0;   /* blue */
+  --sev-critical-rgb: 226, 59, 59;
+  --sev-high-rgb:     217, 106, 26;
+  --sev-medium-rgb:   240, 160, 64;
+  --sev-low-rgb:      245, 216, 0;
+  --sev-normal-rgb:   39, 116, 240;
+}
+
+/* Container layout — body fills viewport exactly (no body-scroll); the
+   container scrolls internally if content overflows. Sidebar (fixed) and
+   header (in-flow) stay anchored. */
+:root { --jci-content-left: var(--jci-sidebar-w); }
+body.jci-sidebar-collapsed { --jci-content-left: 0px; }
+
+body.jci-alarm-page,
+body.jci-trend-page {
+  height: 100vh;
+  overflow: hidden;
+}
+body.jci-alarm-page #myAlarmContainer,
+body.jci-trend-page #trendContainer {
+  background: var(--jci-page);
+  height: calc(100vh - var(--jci-header-h));
+  box-sizing: border-box;
+  padding-top: 0 !important;
+  padding-left: var(--jci-content-left) !important;
+  padding-right: 0 !important;
+  padding-bottom: 0 !important;
+  overflow-y: auto;
+  transition: padding-left .25s ease;
+}
+.mt-left-sidebar { transition: transform .25s ease, width .25s ease !important; }
+
+/* ---- Tabs at top, flat (no card) ---- */
+.alarm-page-tabs {
+  display: flex;
+  align-items: flex-end;
+  padding: 20px 24px 0;
+  background: transparent;
+  border-bottom: 1px solid var(--jci-border);
+  height: 62px;
+}
+.alarm-tabs {
+  list-style: none;
+  margin: 0 !important;
+  padding: 0;
+  display: flex;
+  gap: 24px;
+  align-items: stretch;
+  height: 100%;
+  border: 0 !important;
+  flex: 1;
+}
+.alarm-tabs > li {
+  list-style: none;
+  display: flex;
+  align-items: stretch;
+  position: relative;
+}
+.alarm-tabs > li > a {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none !important;
+  color: var(--jci-text-muted) !important;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 0 4px;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+}
+.alarm-tabs > li > a:hover { color: var(--jci-text) !important; }
+.alarm-tabs > li.active > a,
+.alarm-tabs > li.active > a:hover,
+.alarm-tabs > li.active > a:focus {
+  color: var(--jci-link) !important;
+  font-weight: 500;
+}
+.alarm-tabs > li.active::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: -1px;
+  height: 2px;
+  background: var(--jci-link);
+}
+.alarm-page-tabs-aside { display: flex; align-items: center; gap: 8px; }
+.alarm-help-icon {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 28px; height: 28px; border-radius: 50%;
+  color: var(--jci-text-muted);
+  text-decoration: none;
+}
+.alarm-help-icon:hover { color: var(--jci-link); background: var(--jci-row-hover); }
+.alarm-help-icon i.mdi { font-size: 18px; }
+
+/* ---- Sliding viewport ---- */
+.alarm-views-viewport {
+  overflow: hidden;
+  width: 100%;
+}
+.alarm-views-track {
+  display: flex;
+  width: 200%;
+  transition: transform .35s cubic-bezier(.4, 0, .2, 1);
+}
+.alarm-views-track[data-view="history"] { transform: translateX(-50%); }
+.alarm-view-pane {
+  flex: 0 0 50%;
+  min-width: 0;
+  padding: 16px 24px 24px 24px;
+  box-sizing: border-box;
+}
+
+/* ---- Stat cards row (Active pane only) ---- */
+body.jci-alarm-page .alarm-view-pane > .jci-alarm-stats {
+  margin: 0 0 16px 0;
+  padding: 0;
+  background: transparent;
+  display: grid;
+  grid-template-columns: minmax(280px, 1fr) minmax(360px, 2fr);
+  gap: 16px;
+}
+body.jci-alarm-page .jci-alarm-stats .jci-stat-card {
+  background: var(--jci-bg);
+  border: 1px solid var(--jci-border);
+  border-radius: 8px;
+  box-shadow: var(--jci-shadow);
+}
+
+/* Severity colors used in the bar + pills (override legacy mapping) */
+.jci-severity-pill.critical::before { background: var(--sev-critical); }
+.jci-severity-pill.high::before     { background: var(--sev-high); }
+.jci-severity-pill.medium::before   { background: var(--sev-medium); }
+.jci-severity-pill.low::before      { background: var(--sev-low); }
+.jci-severity-bar > span.critical { background: var(--sev-critical); }
+.jci-severity-bar > span.high     { background: var(--sev-high); }
+.jci-severity-bar > span.medium   { background: var(--sev-medium); }
+.jci-severity-bar > span.low      { background: var(--sev-low); }
+.jci-severity-info {
+  font-size: 13px;
+  color: var(--jci-text-soft);
+  margin-left: 6px;
+  cursor: help;
+}
+.jci-severity-info:hover { color: var(--jci-text-muted); }
+
+/* ---- Main card (one card containing toolbar + table + footer) ---- */
+.alarm-main-card {
+  background: var(--jci-bg);
+  border: 1px solid var(--jci-border);
+  border-radius: 8px;
+  box-shadow: var(--jci-shadow);
+  /* No overflow:hidden so dropdown menus from the filter-bar are not clipped.
+     The table-wrap handles its own horizontal scroll. */
+}
+.alarm-toolbar { border-radius: 8px 8px 0 0; }
+.alarm-footer  { border-radius: 0 0 8px 8px; }
+
+/* ---- Toolbar row inside the main card ---- */
+.alarm-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: #fafbfc;
+  border-bottom: 1px solid var(--jci-border);
+}
+.alarm-toolbar-left { display: flex; gap: 8px; align-items: center; }
+.alarm-toolbar-right { display: flex; gap: 6px; align-items: center; margin-left: auto; }
+
+.alarm-tbtn {
+  background: #fff;
+  border: 1px solid var(--jci-border);
+  color: var(--jci-text);
+  height: 32px;
+  padding: 0 12px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  text-shadow: none;
+  box-shadow: none;
+  cursor: pointer;
+}
+.alarm-tbtn:hover { background: var(--jci-row-hover); color: var(--jci-text); }
+.alarm-tbtn:disabled,
+.alarm-tbtn[disabled] {
+  background: #f3f4f6;
+  border-color: var(--jci-border);
+  color: var(--jci-text-soft);
+  cursor: not-allowed;
+}
+.alarm-tbtn i.mdi { font-size: 16px; }
+.alarm-tbtn .caret { margin-left: 2px; }
+
+/* Ack button — text + icon, gray when disabled */
+.alarm-tbtn-ack { font-weight: 400; }
+.alarm-tbtn-ack:not(:disabled) { color: var(--jci-link); border-color: var(--jci-blue-soft); }
+/* Bulk-ack only makes sense for the Active pane. */
+.alarm-main-card[data-pane="history"] .alarm-tbtn-ack { display: none !important; }
+
+/* Export button — outlined link-blue */
+.alarm-tbtn-export {
+  color: var(--jci-link);
+  border-color: var(--jci-blue-soft);
+}
+.alarm-tbtn-export:hover { background: var(--jci-blue-soft); color: var(--jci-link); }
+
+/* Bulk delete — same outlined style as Export, hidden by default. Only
+   surfaces on the History pane when at least one row is selected. */
+.alarm-tbtn-delete { display: none !important; }
+.alarm-main-card[data-pane="history"].has-selection .alarm-tbtn-delete {
+  display: inline-flex !important;
+  color: var(--jci-danger);
+  border-color: rgba(226, 59, 59, 0.3);
+}
+.alarm-main-card[data-pane="history"].has-selection .alarm-tbtn-delete:hover {
+  background: rgba(226, 59, 59, 0.08);
+  color: var(--jci-danger);
+  border-color: var(--jci-danger);
+}
+
+/* Search wrap on the right */
+.alarm-search-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--jci-border);
+  border-radius: 4px;
+  background: #fff;
+  height: 32px;
+  width: 280px;
+  padding: 0 8px 0 30px;
+  box-sizing: border-box;
+}
+.alarm-search-wrap > i.mdi {
+  position: absolute;
+  left: 8px;
+  color: var(--jci-text-soft);
+  font-size: 16px;
+  pointer-events: none;
+}
+/* Strip ALL native styling off the inner <input type=search> so it doesn't
+   render as a "field within a field" on focus. */
+.alarm-search-wrap input,
+.alarm-search-wrap input:focus,
+.alarm-search-wrap input:active {
+  border: 0 !important;
+  background: transparent !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+  width: 100%;
+  height: 100%;
+  font: inherit;
+  color: var(--jci-text);
+  padding: 0;
+  margin: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 0;
+}
+.alarm-search-wrap input::placeholder { color: var(--jci-text-soft); }
+.alarm-search-wrap input::-webkit-search-cancel-button,
+.alarm-search-wrap input::-webkit-search-decoration,
+.alarm-search-wrap input::-webkit-search-results-button,
+.alarm-search-wrap input::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+  appearance: none;
+}
+.alarm-search-wrap:focus-within {
+  border-color: var(--jci-blue);
+  box-shadow: 0 0 0 2px rgba(39,116,240,0.15);
+}
+
+/* Icon-only toolbar buttons (filter, refresh) */
+.alarm-tbtn-icon {
+  background: #fff;
+  border: 1px solid var(--jci-border);
+  color: var(--jci-text-muted);
+  width: 32px; height: 32px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.alarm-tbtn-icon:hover { background: var(--jci-row-hover); color: var(--jci-text); }
+.alarm-tbtn-icon.active { background: var(--jci-blue-soft); color: var(--jci-link); border-color: var(--jci-blue); }
+.alarm-tbtn-icon i.mdi { font-size: 16px; }
+
+/* ---- Filter slide-out bar ---- */
+.alarm-filter-bar {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .25s ease, padding .25s ease, border-color .25s ease;
+  background: #fff;
+  border-bottom: 0 solid transparent;
+  position: relative;
+  z-index: 5;
+}
+.alarm-filter-bar.expanded {
+  max-height: 600px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--jci-border);
+  /* When expanded we want dropdowns to escape the bar; the transition delay
+     ensures the slide animation completes with overflow hidden, then opens. */
+  overflow: visible;
+  transition: max-height .25s ease, padding .25s ease;
+}
+.alarm-filter-row {
+  display: flex;
+  gap: 16px;
+  align-items: stretch;
+  flex-wrap: wrap;
+}
+.alarm-filter-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 4px;
+  box-sizing: border-box;
+}
+.alarm-filter-item label {
+  font-size: 11px;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: var(--jci-text-muted);
+  margin: 0;
+  font-weight: 500;
+  line-height: 16px;
+  height: 16px;
+}
+/* "From → To" date range using bootstrap-datetimepicker (Stefan Petre).
+   Each side is a single button that opens the picker; the actual input
+   is hidden — only the button (the .add-on) is visible. All controls in
+   the pair are exactly 32px tall and vertically centered to match the
+   severity/tags dropdown buttons in the same filter row. */
+.alarm-daterange-pair {
+  display: flex;
+  align-items: center;     /* center children on the 32px baseline */
+  gap: 6px;
+  height: 32px;
+}
+/* The wrap is structurally needed by the picker (it must contain .add-on
+   + input), but visually we want the .add-on button to be a direct flex
+   child of .alarm-daterange-pair. `display: contents` removes the wrap
+   from the layout box so the button aligns identically to the × clear. */
+.alarm-daterange-pair .alarm-dt-wrap {
+  display: contents !important;
+  position: static !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.alarm-daterange-pair .alarm-dt-wrap input.alarm-dt-hidden {
+  position: absolute !important;
+  left: -9999px !important;
+  top: -9999px !important;
+  width: 1px !important;
+  height: 1px !important;
+  opacity: 0;
+  pointer-events: none;
+}
+/* The .add-on becomes the visible button. */
+.alarm-daterange-pair .alarm-dt-wrap .alarm-dt-btn {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 6px;
+  height: 32px !important;
+  min-width: 130px;
+  padding: 0 12px !important;
+  border: 1px solid var(--jci-border) !important;
+  border-radius: 4px !important;
+  background: #fff !important;
+  color: var(--jci-text) !important;
+  font-size: 13px;
+  cursor: pointer;
+  box-sizing: border-box;
+  margin: 0 !important;
+  text-shadow: none;
+  user-select: none;
+  -webkit-user-select: none;
+  line-height: normal;
+  vertical-align: top;
+}
+.alarm-daterange-pair .alarm-dt-wrap .alarm-dt-btn:hover {
+  background: var(--jci-row-hover) !important;
+  border-color: var(--jci-border-strong) !important;
+}
+.alarm-daterange-pair .alarm-dt-wrap .alarm-dt-btn i.mdi {
+  color: var(--jci-text-muted);
+  font-size: 16px;
+  flex-shrink: 0;
+}
+/* Stefan Petre's bootstrap-datetimepicker mutates the trigger <i>'s class
+   list — it adds `icon-calendar` / `icon-time` and toggles between them
+   when the user switches between date/time mode in the picker popup. Both
+   classes pull a Bootstrap-2 glyphicon sprite via background-image, which
+   then renders ON TOP of our MDI calendar glyph. Suppress the sprite. */
+.alarm-daterange-pair .alarm-dt-wrap .alarm-dt-btn > i,
+.alarm-daterange-pair .alarm-dt-wrap .alarm-dt-btn > i[class*="icon-"] {
+  background: none !important;
+  background-image: none !important;
+  width: auto !important;
+  height: auto !important;
+  margin: 0 !important;
+}
+.alarm-daterange-pair .alarm-dt-wrap .alarm-dt-label {
+  flex: 1;
+  text-align: left;
+  color: var(--jci-text);
+}
+.alarm-daterange-pair .alarm-dt-wrap .alarm-dt-label.is-empty { color: var(--jci-text-soft); }
+.alarm-daterange-pair .alarm-daterange-sep {
+  color: var(--jci-text-soft);
+  font-size: 14px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.alarm-daterange-pair .alarm-date-clear {
+  background: transparent;
+  border: 0;
+  color: var(--jci-text-muted);
+  font-size: 18px;
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+.alarm-daterange-pair .alarm-date-clear:hover { background: var(--jci-row-hover); color: var(--jci-danger); }
+.alarm-filter-item .alarm-multi { display: block; }
+.alarm-filter-item .alarm-multi-toggle {
+  height: 32px;
+  box-sizing: border-box;
+  margin: 0;
+  display: flex;
+  width: 180px;
+}
+
+/* Severity swatch in the filter dropdown — mirrors the small vertical bar
+   used on the UNACKED SEVERITY stat card. Uses <i> with non-breaking-space
+   content so the element never collapses to zero width. */
+body.jci-alarm-page .alarm-multi-menu .alarm-sev-swatch {
+  display: inline-block !important;
+  width: 3px !important;
+  height: 12px !important;
+  border-radius: 2px;
+  margin: 0 8px 0 6px !important;
+  vertical-align: -1px;
+  flex-shrink: 0;
+  font-style: normal !important;
+  font-size: 0;
+  line-height: 12px;
+  overflow: hidden;
+  color: transparent;
+  text-indent: -9999px;
+}
+body.jci-alarm-page .alarm-multi-menu .alarm-sev-swatch.sev-critical { background: var(--sev-critical) !important; }
+body.jci-alarm-page .alarm-multi-menu .alarm-sev-swatch.sev-high     { background: var(--sev-high)     !important; }
+body.jci-alarm-page .alarm-multi-menu .alarm-sev-swatch.sev-medium   { background: var(--sev-medium)   !important; }
+body.jci-alarm-page .alarm-multi-menu .alarm-sev-swatch.sev-low      { background: var(--sev-low)      !important; }
+body.jci-alarm-page .alarm-multi-menu .alarm-sev-swatch.sev-normal   { background: var(--sev-normal)   !important; }
+body.jci-alarm-page .alarm-multi-menu .alarm-sev-text {
+  flex: 1;
+  color: var(--jci-text);
+}
+
+/* Multi-select filter (severity / tags) */
+.alarm-multi { position: relative; display: inline-block; }
+.alarm-multi-toggle {
+  background: #fff;
+  border: 1px solid var(--jci-border);
+  border-radius: 4px;
+  height: 32px;
+  padding: 0 10px;
+  font-size: 13px;
+  color: var(--jci-text);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 140px;
+  text-align: left;
+  cursor: pointer;
+}
+.alarm-multi-toggle:hover { background: var(--jci-row-hover); }
+.alarm-multi-toggle .alarm-multi-label { flex: 1; }
+.alarm-multi-menu {
+  min-width: 180px;
+  padding: 4px 0;
+  max-height: 280px;
+  overflow-y: auto;
+}
+body.jci-alarm-page .alarm-multi-menu > li > a,
+body.jci-alarm-page .alarm-multi-menu > li > a:visited,
+body.jci-alarm-page .alarm-multi-menu > li.active > a,
+body.jci-alarm-page .alarm-multi-menu > li.active > a:hover,
+body.jci-alarm-page .alarm-multi-menu > li.active > a:focus,
+body.jci-alarm-page .alarm-multi-menu > li > a:active {
+  padding: 6px 12px !important;
+  display: block !important;
+  text-decoration: none !important;
+  color: var(--jci-text) !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  text-shadow: none !important;
+  outline: 0 !important;
+}
+body.jci-alarm-page .alarm-multi-menu > li > a:hover,
+body.jci-alarm-page .alarm-multi-menu > li > a:focus {
+  background: var(--jci-row-hover) !important;
+  background-color: var(--jci-row-hover) !important;
+  color: var(--jci-text) !important;
+}
+.alarm-multi-menu label {
+  margin: 0 !important;
+  display: flex !important;
+  align-items: center;
+  gap: 0;
+  cursor: pointer;
+  font-weight: 400 !important;
+  color: var(--jci-text) !important;
+}
+.alarm-multi-menu input[type=checkbox] { margin: 0 4px 0 0 !important; }
+.alarm-multi-menu .alarm-multi-empty { padding: 6px 12px; color: var(--jci-text-soft); font-style: italic; font-size: 12px; }
+
+.alarm-filter-clear {
+  background: transparent;
+  border: 0;
+  color: var(--jci-link);
+  font-size: 13px;
+  cursor: pointer;
+  height: 32px;
+  padding: 0 8px;
+  align-self: flex-end;
+  margin-bottom: 0;
+}
+.alarm-filter-clear:hover { color: var(--jci-link-hover); text-decoration: underline; }
+
+/* ---- Table ---- */
+.alarm-table-wrap {
+  position: relative;
+  overflow-x: auto;
+  background: #fff;
+}
+.alarm-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.alarm-table thead th {
+  background: #fff;
+  border-bottom: 1px solid var(--jci-border);
+  color: var(--jci-text);
+  font-weight: 500;
+  font-size: 13px;
+  padding: 12px 16px;
+  text-align: left;
+  white-space: nowrap;
+  user-select: none;
+}
+.alarm-table thead th.alarm-sort { cursor: pointer; }
+.alarm-table thead th.alarm-sort:hover { color: var(--jci-link); }
+.alarm-table thead th.alarm-sort i.mdi { font-size: 14px; opacity: 0.5; margin-left: 2px; }
+.alarm-table thead th.alarm-sort.sort-asc i.mdi,
+.alarm-table thead th.alarm-sort.sort-desc i.mdi { opacity: 1; color: var(--jci-link); }
+
+.alarm-table tbody td {
+  border-top: 1px solid var(--jci-border);
+  padding: 12px 16px;
+  vertical-align: middle;
+  color: var(--jci-text);
+}
+.alarm-table tbody tr { background: #fff; }
+.alarm-table tbody tr:hover { background: var(--jci-row-hover); }
+.alarm-table tbody tr:nth-child(even):not(:hover) { background: #fafbfc; }
+.alarm-table tbody tr.alarm-row-acked td { color: var(--jci-text-muted); }
+
+.alarm-col-select { width: 36px; }
+.alarm-col-priority { width: 110px; }
+.alarm-col-text { min-width: 220px; }
+.alarm-col-date { width: 160px; white-space: nowrap; }
+.alarm-col-value { width: 90px; font-size: 13px; }
+.alarm-col-tags { max-width: 180px; }
+.alarm-col-status { width: 130px; }
+.alarm-col-action { width: 130px; text-align: right; white-space: nowrap; }
+
+/* Severity pill — filled background at 20% opacity, colored border, black text. */
+.alarm-pri-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 70px;
+  height: 24px;
+  padding: 0 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+  border: 1px solid currentColor;
+  letter-spacing: 0.2px;
+  color: #000;
+}
+.alarm-pri-pill.priority-critical { background: rgba(var(--sev-critical-rgb), 0.2); border-color: var(--sev-critical); }
+.alarm-pri-pill.priority-high     { background: rgba(var(--sev-high-rgb),     0.2); border-color: var(--sev-high); }
+.alarm-pri-pill.priority-medium   { background: rgba(var(--sev-medium-rgb),   0.2); border-color: var(--sev-medium); }
+.alarm-pri-pill.priority-low      { background: rgba(var(--sev-low-rgb),      0.2); border-color: #b8a000; }
+.alarm-pri-pill.priority-normal   { background: rgba(var(--sev-normal-rgb),   0.2); border-color: var(--sev-normal); }
+.alarm-pri-pill.priority-none     { background: rgba(0,0,0,0.06); color: var(--jci-text-soft); border-color: var(--jci-border); }
+
+/* Tag chip */
+.alarm-tag {
+  display: inline-block;
+  background: var(--jci-blue-soft);
+  color: var(--jci-link);
+  border: 1px solid #b9d4ff;
+  border-radius: 999px;
+  padding: 2px 8px;
+  font-size: 11px;
+  margin-right: 4px;
+  margin-bottom: 2px;
+}
+
+/* Status (Active vs Normal — based on the latest same-text event) */
+.alarm-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12.5px;
+}
+.alarm-status i.mdi { font-size: 16px; }
+.alarm-status-active { color: var(--jci-danger); }
+.alarm-status-normal { color: var(--jci-success); }
+.alarm-status-ackn   { color: var(--jci-success); }
+.alarm-status-icon { margin-right: 4px; }
+
+.alarm-ack-info {
+  font-size: 11px;
+  color: var(--jci-success);
+  margin-top: 2px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.alarm-ack-info i.mdi { font-size: 13px; }
+
+/* History pane "Acknowledged" cell — check icon + user on top, ack
+   timestamp below in muted text. */
+.alarm-ack-line {
+  display: flex;
+  flex-direction: column;
+  font-size: 12.5px;
+  color: var(--jci-text);
+  line-height: 1.3;
+  gap: 1px;
+}
+.alarm-ack-line .alarm-ack-line-top {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.alarm-ack-line .alarm-ack-line-top i.mdi {
+  font-size: 14px;
+  color: var(--jci-success);
+  flex-shrink: 0;
+}
+.alarm-ack-line .alarm-ack-date {
+  font-size: 11px;
+  color: var(--jci-text-muted);
+}
+
+/* Per-row action buttons */
+.alarm-row-btn {
+  background: transparent;
+  border: 0;
+  color: var(--jci-text-soft);
+  width: 26px; height: 26px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 2px;
+  position: relative;
+  cursor: pointer;
+}
+.alarm-row-btn:hover { background: var(--jci-row-hover); color: var(--jci-text); }
+.alarm-row-btn i.mdi { font-size: 16px; }
+.alarm-row-btn.alarm-ack:hover { color: var(--jci-success); }
+.alarm-row-btn.alarm-del:hover { color: var(--jci-danger); }
+.alarm-row-btn.alarm-notes:hover { color: var(--jci-link); }
+.alarm-note-count {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: var(--jci-link);
+  color: #fff;
+  border-radius: 8px;
+  font-size: 10px;
+  padding: 0 4px;
+  min-width: 14px;
+  line-height: 14px;
+  text-align: center;
+}
+
+/* Empty + loading */
+.alarm-table-empty {
+  padding: 48px 20px;
+  text-align: center;
+  color: var(--jci-text-muted);
+  font-size: 13px;
+  display: none;
+}
+.alarm-table-loading {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  background: rgba(255,255,255,0.85);
+  text-align: center;
+  padding: 12px;
+  font-size: 13px;
+  color: var(--jci-text-muted);
+  display: none;
+  z-index: 10;
+}
+.alarm-table-loading i.mdi { font-size: 16px; }
+@keyframes mdi-spin-anim { from { transform: rotate(0); } to { transform: rotate(360deg); } }
+.mdi.mdi-spin { display: inline-block; animation: mdi-spin-anim 1s linear infinite; }
+
+/* ---- Footer (inside main card) ---- */
+.alarm-footer {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 16px;
+  background: #fff;
+  border-top: 1px solid var(--jci-border);
+  font-size: 12.5px;
+  color: var(--jci-text-muted);
+  flex-wrap: wrap;
+}
+.alarm-footer-totals {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.alarm-footer-totals > i {
+  font-style: italic;
+  letter-spacing: 0.3px;
+  margin-right: 4px;
+}
+.alarm-total-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--jci-page);
+  border: 1px solid var(--jci-border);
+  border-radius: 999px;
+  padding: 2px 8px;
+  font-size: 12px;
+  color: var(--jci-text);
+  font-weight: 500;
+}
+.alarm-total-pill i.mdi { font-size: 13px; }
+.alarm-total-active i.mdi { color: var(--jci-danger); }
+.alarm-total-ackn i.mdi   { color: var(--jci-success); }
+.alarm-total-notes i.mdi  { color: var(--jci-link); }
+
+.alarm-footer-pagination {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.alarm-page-size-label { color: var(--jci-text-muted); line-height: 28px; }
+.alarm-page-size {
+  width: 64px;
+  height: 28px !important;
+  line-height: 28px !important;
+  padding: 0 6px !important;
+  font-size: 12.5px;
+  border: 1px solid var(--jci-border) !important;
+  border-radius: 4px !important;
+  background: #fff !important;
+  color: var(--jci-text) !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+  vertical-align: middle;
+  display: inline-block;
+  -webkit-appearance: menulist;
+  appearance: menulist;
+}
+.alarm-page-info { font-variant-numeric: tabular-nums; }
+.alarm-footer-pagination .btn-group { gap: 0; }
+.alarm-page-btn {
+  height: 28px !important;
+  width: 28px !important;
+  padding: 0 !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  background: #fff !important;
+  border: 1px solid var(--jci-border) !important;
+  color: var(--jci-text-muted) !important;
+}
+.alarm-page-btn:hover { background: var(--jci-row-hover) !important; color: var(--jci-text) !important; }
+.alarm-page-btn:disabled { color: var(--jci-text-soft) !important; cursor: not-allowed; }
+.alarm-page-btn i.mdi { font-size: 14px; }
+
+/* ---- Notes modal ---- */
+#alarm-notes-modal .modal-title i.mdi { color: var(--jci-link); margin-right: 4px; }
+.alarm-notes-list { max-height: 320px; overflow-y: auto; }
+.alarm-notes-empty {
+  text-align: center;
+  color: var(--jci-text-soft);
+  padding: 24px 0;
+  font-size: 13px;
+}
+.alarm-note-item {
+  padding: 10px 12px;
+  background: var(--jci-page);
+  border: 1px solid var(--jci-border);
+  border-radius: 6px;
+  margin-bottom: 8px;
+}
+.alarm-note-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--jci-text-muted);
+  margin-bottom: 4px;
+}
+.alarm-note-user i.mdi { color: var(--jci-link); margin-right: 2px; }
+.alarm-note-body { font-size: 13px; color: var(--jci-text); white-space: pre-wrap; word-break: break-word; }
+.alarm-note-add textarea { resize: vertical; }
+
+/* ============================================================
+   Trend page (jci-trend.js / app/trend.php)
+   ============================================================ */
+/* Trend page: full-height flex column so the chart card stretches to fill
+   the remaining viewport height. */
+body.jci-trend-page #trendContainer {
+  display: flex;
+  flex-direction: column;
+}
+.trend-page-tabs {
+  padding: 12px 16px 0;
+  flex: 0 0 auto;
+}
+.trend-page-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--jci-text);
+}
+.trend-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 16px;
+  padding: 12px 16px 16px;
+  flex: 1 1 auto;
+  min-height: 0;       /* allow grid to shrink below content height */
+  position: relative;  /* anchor for the floating expand handle */
+}
+/* Collapsed: hide the points card entirely. Reserve a 48px gutter on the
+   left for the floating expand button so it doesn't overlap the chart. */
+body.jci-trend-points-collapsed .trend-layout {
+  grid-template-columns: 48px 1fr;
+  gap: 0;
+}
+body.jci-trend-points-collapsed .trend-points-card { display: none; }
+.trend-points-expand { display: none; }
+body.jci-trend-points-collapsed .trend-points-expand {
+  display: inline-flex;
+  align-self: start;
+  margin: 4px 0 0 8px;
+  width: 32px;
+  height: 32px;
+  align-items: center;
+  justify-content: center;
+  background: var(--jci-bg);
+  border: 1px solid var(--jci-border);
+  border-radius: 6px;
+  color: var(--jci-text-muted);
+  cursor: pointer;
+  box-shadow: var(--jci-shadow);
+}
+body.jci-trend-points-collapsed .trend-points-expand:hover {
+  color: var(--jci-link);
+  border-color: var(--jci-blue);
+}
+body.jci-trend-points-collapsed .trend-points-expand i.mdi { font-size: 18px; }
+
+/* ---- Points config card (left) ---- */
+.trend-points-card {
+  padding: 0;
+  overflow: hidden;
+  align-self: start;
+}
+.trend-points-header {
+  padding: 8px 12px 8px 16px;
+  font-size: 11px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: var(--jci-text-muted);
+  border-bottom: 1px solid var(--jci-border);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-height: 36px;
+}
+.trend-points-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.trend-edit-btn,
+.trend-save-btn,
+.trend-cancel-btn,
+.trend-collapse-btn {
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  padding: 4px 8px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--jci-text-muted);
+  font-size: 11px;
+}
+.trend-edit-btn { padding: 4px 6px; }
+.trend-edit-btn i.mdi { font-size: 16px; }
+.trend-edit-btn:hover { background: var(--jci-row-hover); color: var(--jci-link); }
+.trend-save-btn { color: var(--jci-link); }
+.trend-save-btn i.mdi { font-size: 14px; }
+.trend-save-btn:hover { background: var(--jci-blue-soft); }
+.trend-cancel-btn:hover { background: var(--jci-row-hover); color: var(--jci-text); }
+.trend-collapse-btn { padding: 4px 6px; }
+.trend-collapse-btn i.mdi { font-size: 16px; }
+.trend-collapse-btn:hover { background: var(--jci-row-hover); color: var(--jci-link); }
+/* Edit mode toggles which header buttons + inputs are visible. */
+.trend-points-card .trend-save-btn,
+.trend-points-card .trend-cancel-btn { display: none; }
+.trend-points-card.editing .trend-edit-btn { display: none; }
+.trend-points-card.editing .trend-save-btn,
+.trend-points-card.editing .trend-cancel-btn { display: inline-flex; }
+.trend-points-card .trend-point-input { display: none; }
+.trend-points-card.editing .trend-point-input { display: block; margin-top: 6px; }
+.trend-points-list {
+  max-height: 70vh;
+  overflow-y: auto;
+}
+.trend-points-empty {
+  padding: 16px;
+  color: var(--jci-text-soft);
+  font-size: 13px;
+  text-align: center;
+}
+.trend-point-row {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--jci-border);
+  font-size: 13px;
+}
+.trend-point-row:last-child { border-bottom: 0; }
+.trend-point-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 400;
+  margin: 0 0 6px 0;
+  cursor: pointer;
+}
+.trend-point-toggle input[type="checkbox"] { margin: 0; flex-shrink: 0; }
+.trend-point-swatch {
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.trend-point-name { flex: 1; color: var(--jci-text); word-break: break-all; }
+.trend-point-kind {
+  font-size: 10px;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: var(--jci-text-soft);
+}
+.trend-point-input { padding-left: 18px; }
+.trend-point-input label {
+  font-size: 10px;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: var(--jci-text-muted);
+  font-weight: 500;
+  margin: 0 0 2px 0;
+  display: block;
+}
+.trend-point-input input[type="text"] {
+  width: 100%;
+  height: 28px;
+  border: 1px solid var(--jci-border);
+  border-radius: 4px;
+  padding: 0 8px;
+  font-size: 12.5px;
+  font-family: inherit;
+  color: var(--jci-text);
+  background: #fff;
+  box-sizing: border-box;
+}
+.trend-point-input input[type="text"]:focus {
+  outline: 0;
+  border-color: var(--jci-blue);
+  box-shadow: 0 0 0 2px rgba(39,116,240,0.15);
+}
+.trend-point-state-pair {
+  display: flex;
+  gap: 6px;
+}
+.trend-point-state-pair input { flex: 1; min-width: 0; }
+
+/* ---- Chart card (right) — fills available height ---- */
+.trend-chart-card {
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+.trend-chart-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: #fafbfc;
+  border-bottom: 1px solid var(--jci-border);
+  flex-wrap: wrap;
+  flex: 0 0 auto;
+}
+.trend-toolbar-left {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.trend-toolbar-right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+/* Quick-range preset dropdown — sits next to the date pickers */
+.trend-preset-group { position: relative; }
+.trend-preset-toggle .mdi-clock-fast { font-size: 16px; margin-right: 2px; }
+.trend-preset-menu {
+  min-width: 180px;
+}
+.trend-preset-menu > li > a {
+  font-size: 13px;
+  padding: 6px 14px;
+  color: var(--jci-text);
+}
+.trend-preset-menu > li > a:hover {
+  background: var(--jci-row-hover);
+  color: var(--jci-link);
+}
+.trend-preset-menu > li.divider {
+  height: 1px;
+  margin: 4px 0;
+  background: var(--jci-border);
+  list-style: none;
+}
+.trend-chart-wrap {
+  position: relative;
+  background: #fff;
+  padding: 8px;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+}
+.trend-chart-wrap > div:first-child { /* the apex chart container */
+  height: 100% !important;
+}
+/* Pan mode: change cursor on the chart to signal draggability. */
+.trend-chart-wrap.trend-pan-mode { cursor: grab; }
+.trend-chart-wrap.trend-pan-mode:active { cursor: grabbing; }
+.trend-chart-wrap.trend-pan-mode * { cursor: inherit !important; }
+.trend-loading {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  background: rgba(255,255,255,0.85);
+  text-align: center;
+  padding: 12px;
+  font-size: 13px;
+  color: var(--jci-text-muted);
+  display: none;
+  z-index: 10;
+}
+.trend-loading i.mdi { font-size: 16px; }
+.trend-empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--jci-text-muted);
+}
+
+/* The .alarm-card class is reused as the rounded container for both
+   the points and chart cards on the trend page. */
+.trend-points-card.alarm-card,
+.trend-chart-card.alarm-card {
+  background: var(--jci-bg);
+  border: 1px solid var(--jci-border);
+  border-radius: 8px;
+  box-shadow: var(--jci-shadow);
+}
+
+/* ============================================================
+   Graphic page chrome (jci-graphic-chrome.js / app/graphic.php)
+   ============================================================
+   IMPORTANT: this chrome must NEVER override the dimensions of
+   #grCanvas. graphic.min.js sets explicit width/height on it based
+   on the .gr file; if we override (display, width, etc.) the
+   internal Apex chart inside the graphic computes width=0 and
+   throws "<rect> attribute x: Expected length, Infinity". Scaling
+   is applied to a parent wrapper (.jci-graphic-scale) via CSS
+   `zoom` which leaves #grCanvas untouched. */
+
+/* Page layout: full-height column. The card flex-grows to fill remaining
+   vertical space below the breadcrumb header. */
+body.jci-graphic-body {
+  height: 100vh;
+  overflow: hidden;
+}
+body.jci-graphic-body .container-fluid.jci-graphic-page {
+  background: var(--jci-page);
+  height: calc(100vh - var(--jci-header-h));
+  box-sizing: border-box;
+  padding: 16px 16px 12px calc(var(--jci-content-left) + 16px) !important;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: padding-left .25s ease;
+}
+.jci-graphic-header {
+  display: flex;
+  align-items: center;
+  padding: 0 0 10px;
+  flex: 0 0 auto;
+  min-height: 28px;
+}
+.jci-graphic-breadcrumb {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--jci-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: 0.2px;
+}
+.jci-graphic-card {
+  background: var(--jci-bg);
+  border: 1px solid var(--jci-border);
+  border-radius: 8px;
+  box-shadow: var(--jci-shadow);
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+}
+/* Compact toolbar — keeps as much vertical room as possible for the graphic. */
+.jci-graphic-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2px 12px;
+  background: #f4f5f7;
+  border-bottom: 1px solid var(--jci-border);
+  flex: 0 0 auto;
+  height: 26px;
+  min-height: 26px;
+}
+.jci-graphic-title {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--jci-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.jci-graphic-zoom {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+.jci-graphic-zbtn {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--jci-text-muted);
+  cursor: pointer;
+}
+.jci-graphic-zbtn:hover { background: rgba(0,0,0,0.08); color: var(--jci-text); }
+.jci-graphic-zbtn i.mdi { font-size: 14px; }
+.jci-graphic-zoom-level {
+  display: inline-block;
+  min-width: 40px;
+  text-align: center;
+  font-size: 11px;
+  color: var(--jci-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+/* Viewport: defaults to no-scroll (auto-fit zooms graphic to fit). When
+   the user manually zooms in past fit, JS flips overflow to auto so they
+   can scroll/pan to the clipped regions. Wheel events on the viewport
+   are captured by JS for cursor-anchored zoom, so the wheel never
+   actually scrolls the page. */
+.jci-graphic-viewport {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+  background: var(--jci-bg);
+  position: relative;
+}
+/* Scale wrapper — CSS `zoom` is set by JS via element.style.zoom (CSS
+   variables in `zoom:` don't reliably parse across Chromium versions).
+   inline-block + overflow:hidden so the wrapper shrink-wraps #grCanvas
+   AND contains the float (without overflow:hidden the floated child
+   escapes the wrapper visually). */
+.jci-graphic-scale {
+  display: inline-block;
+  vertical-align: top;
+  overflow: hidden;
+}
+/* Reset legacy #grCanvas margin (was 20px on all sides) — eats into the
+   already-tight available area. Float can stay; it doesn't affect the
+   single-child layout. */
+body.jci-graphic-body .jci-graphic-viewport #grCanvas {
+  margin: 0 !important;
+}
+
+/* Bootstrap 3 tooltip override (severity info popup) */
+body.jci-alarm-page .tooltip-inner {
+  background: #1f2937;
+  color: #fff;
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  text-align: left;
+  max-width: 260px;
+}
+body.jci-alarm-page .tooltip.top .tooltip-arrow,
+body.jci-alarm-page .tooltip.right .tooltip-arrow,
+body.jci-alarm-page .tooltip.left .tooltip-arrow,
+body.jci-alarm-page .tooltip.bottom .tooltip-arrow { border-color: transparent; }
+body.jci-alarm-page .tooltip.top .tooltip-arrow    { border-top-color: #1f2937; }
+body.jci-alarm-page .tooltip.right .tooltip-arrow  { border-right-color: #1f2937; }
+body.jci-alarm-page .tooltip.left .tooltip-arrow   { border-left-color: #1f2937; }
+body.jci-alarm-page .tooltip.bottom .tooltip-arrow { border-bottom-color: #1f2937; }
+
+/* ============================================================ */
+/* Per-user permission hide rules (jci-user-mgmt.js sets these  */
+/* body classes after fetching ?cmd=get-mine).                   */
+/* ============================================================ */
+
+/* alarm_ack=false: hide the bulk-Ack toolbar button + per-row Ack icon */
+body.jci-noperm-alarm-ack [data-act="bulk-ackn"],
+body.jci-noperm-alarm-ack .alarm-row-btn.alarm-ack { display: none !important; }
+
+/* alarm_delete=false: hide the bulk-Delete toolbar button + per-row Delete icon */
+body.jci-noperm-alarm-delete [data-act="bulk-delete"],
+body.jci-noperm-alarm-delete .alarm-row-btn.alarm-del { display: none !important; }
+
+/* trend_edit=false: hide the pencil-Edit button on the points card.
+   Visibility checkboxes stay enabled (they save via the unrestricted
+   save-visible endpoint). */
+body.jci-noperm-trend-edit .trend-edit-btn { display: none !important; }
+
+/* ============================================================ */
+/* Help / user-manual modal.                                      */
+/* Near full-screen with a vertical table-of-contents on the left */
+/* and the manual body on the right. Triggered from #helpBtn.     */
+/* ============================================================ */
+/* Outer .modal wrapper: forceer full-viewport + verticale padding.
+   BS3-default zou dit al moeten doen MAAR op deze controller wordt
+   het soms ergens in de cascade overruled, waardoor de wrapper
+   smaller werd en de modal-dialog er aan de rechterkant uit
+   overflowde. Met !important position+anchors zijn we daar voor
+   altijd vanaf. De vertikale padding fungeert als marge boven en
+   onder de dialog (in plaats van een fixed dialog-height of margin
+   auto). */
+.jci-help-modal.modal {
+	position: fixed !important;
+	top: 0 !important;
+	right: 0 !important;
+	bottom: 0 !important;
+	left: 0 !important;
+	width: 100% !important;
+	height: 100% !important;
+	margin: 0 !important;
+	padding: 2vh 0 !important;        /* boven + onder padding */
+	box-sizing: border-box !important;
+	background: transparent !important; /* override BS2's witte modal-bg */
+	border: 0 !important;             /* override BS2's modal-border */
+	box-shadow: none !important;      /* override BS2's modal-shadow */
+}
+
+/* Dialog: 96vw breed (max 1500px), gecentreerd horizontaal,
+   verticaal vult hij 100% van de modal MIN de padding (= 96vh).
+   modal-content vult de dialog volledig via height: 100%. */
+.jci-help-modal .modal-dialog {
+	width: 96vw !important;
+	max-width: 1500px !important;
+	margin: 0 auto !important;
+	height: 100% !important;
+}
+.jci-help-modal .modal-content {
+	height: 100% !important;
+	display: flex !important;
+	flex-direction: column !important;
+	width: 100% !important;
+	box-sizing: border-box;
+	background: var(--jci-bg) !important;   /* witte modal-bg (BS2 maakte
+	                                          .modal transparent door onze
+	                                          override; modal-content moet
+	                                          dus z'n eigen wit hebben) */
+	border-radius: var(--jci-radius);
+	box-shadow: 0 4px 16px rgba(15, 23, 42, 0.12);
+}
+.jci-help-modal .modal-header {
+	padding: 16px 24px 14px;
+	border-bottom: 1px solid var(--jci-border);
+	flex: 0 0 auto;
+}
+.jci-help-modal .modal-title { font-weight: 500; font-size: 18px; }
+.jci-help-modal .modal-title i.mdi { margin-right: 10px; color: var(--jci-blue); }
+.jci-help-modal .jci-help-subtitle {
+	font-size: 12px;
+	color: var(--jci-text-muted);
+	margin-top: 4px;
+	margin-left: 30px;             /* line up with title text after icon */
+}
+.jci-help-modal .modal-body {
+	display: flex !important;
+	flex: 1 1 auto !important;
+	min-height: 0 !important;       /* allow children to scroll */
+	max-height: none !important;    /* override Bootstrap 2's 400px default */
+	padding: 0 !important;
+	overflow: hidden !important;
+}
+.jci-help-modal .modal-footer {
+	flex: 0 0 auto;
+	padding: 12px 24px;
+	border-top: 1px solid var(--jci-border);
+}
+
+/* Vertical table of contents — left rail */
+.jci-help-toc {
+	flex: 0 0 220px;
+	background: var(--jci-page);
+	border-right: 1px solid var(--jci-border);
+	overflow-y: auto;
+	padding: 12px 0;
+}
+.jci-help-toc a {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	padding: 9px 18px 9px 22px;
+	color: var(--jci-text);
+	font-size: 13px;
+	text-decoration: none;
+	border-left: 3px solid transparent;
+}
+.jci-help-toc a:hover { background: var(--jci-row-hover); color: var(--jci-text); text-decoration: none; }
+.jci-help-toc a i.mdi { font-size: 16px; color: var(--jci-text-soft); flex: 0 0 auto; }
+.jci-help-toc a:hover i.mdi { color: var(--jci-blue); }
+/* Active state — set by JS scroll-spy + on click. Lichtblauwe achtergrond
+   met linker accentstreep, identiek patroon als de hoofdsidebar. */
+.jci-help-toc a.active {
+	background: var(--jci-active-bg);
+	color: var(--jci-blue);
+	border-left-color: var(--jci-blue);
+	font-weight: 500;
+}
+.jci-help-toc a.active i.mdi { color: var(--jci-blue); }
+
+/* Body — right side, scrolls independently */
+.jci-help-content {
+	flex: 1 1 auto;
+	overflow-y: auto;
+	padding: 28px 36px 36px;
+	scroll-behavior: smooth;
+	background: var(--jci-bg);
+}
+
+/* Sections */
+.jci-help-modal section {
+	margin-bottom: 28px;
+	padding-top: 4px;
+	scroll-margin-top: 12px;
+	max-width: 880px;               /* keeps lines a comfortable reading length */
+}
+.jci-help-modal section + section {
+	border-top: 1px solid var(--jci-border);
+	padding-top: 24px;
+}
+.jci-help-modal h5 {
+	font-size: 18px;
+	font-weight: 500;
+	color: var(--jci-text);
+	margin: 0 0 12px;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+.jci-help-modal h5 i.mdi { color: var(--jci-blue); font-size: 22px; }
+.jci-help-modal h6 {
+	font-size: 14px;
+	font-weight: 600;
+	color: var(--jci-text);
+	margin: 18px 0 8px;
+}
+.jci-help-modal p,
+.jci-help-modal li {
+	font-size: 14px;
+	line-height: 1.6;
+	color: var(--jci-text);
+}
+.jci-help-modal p { margin: 0 0 10px; }
+.jci-help-modal ul,
+.jci-help-modal ol { padding-left: 24px; margin: 6px 0 12px; }
+.jci-help-modal li { margin-bottom: 4px; }
+.jci-help-modal ul ul,
+.jci-help-modal ol ol { margin: 4px 0 6px; }
+.jci-help-modal code {
+	background: var(--jci-page);
+	border: 1px solid var(--jci-border);
+	border-radius: 3px;
+	padding: 1px 5px;
+	font-size: 12px;
+	font-family: Menlo, Consolas, 'Courier New', monospace;
+	color: var(--jci-text);
+}
+.jci-help-modal em { font-style: normal; font-weight: 500; color: var(--jci-text); }
+.jci-help-modal strong { font-weight: 600; }
+
+/* Inline mdi icons inside body text */
+.jci-help-modal p i.mdi,
+.jci-help-modal li i.mdi {
+	font-size: 16px;
+	color: var(--jci-text-soft);
+	vertical-align: -2px;
+}
+
+/* Tip callout */
+.jci-help-tip {
+	background: var(--jci-blue-soft);
+	border-left: 3px solid var(--jci-blue);
+	border-radius: 4px;
+	padding: 10px 14px;
+	margin: 12px 0;
+	font-size: 13px;
+}
+.jci-help-tip i.mdi { color: var(--jci-blue) !important; margin-right: 6px; }
+
+/* Admin/role tag next to a section heading */
+.jci-help-admin-badge {
+	display: inline-block;
+	font-size: 10px;
+	font-weight: 600;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+	color: var(--jci-blue);
+	background: var(--jci-blue-soft);
+	border-radius: 3px;
+	padding: 2px 7px;
+	margin-left: 6px;
+	vertical-align: 2px;
+}
+
+/* Prefix table */
+.jci-help-prefix-table {
+	border-collapse: collapse;
+	width: 100%;
+	max-width: 540px;
+	margin: 10px 0 14px;
+	font-size: 13px;
+}
+.jci-help-prefix-table th,
+.jci-help-prefix-table td {
+	border: 1px solid var(--jci-border);
+	padding: 8px 12px;
+	text-align: left;
+	vertical-align: middle;
+}
+.jci-help-prefix-table th {
+	background: var(--jci-page);
+	font-weight: 600;
+	color: var(--jci-text);
+	font-size: 12px;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}
+.jci-help-prefix-table td:nth-child(1) { width: 90px; }
+.jci-help-prefix-table td:nth-child(2) { width: 60px; text-align: center; }
+.jci-help-prefix-table td:nth-child(2) i.mdi { font-size: 22px; color: var(--jci-text); }
+.jci-help-prefix-table tbody tr:nth-child(odd) { background: rgba(0,0,0,0.015); }
+
+/* Pre-block for the directory tree example */
+.jci-help-tree {
+	background: var(--jci-page);
+	border: 1px solid var(--jci-border);
+	border-radius: var(--jci-radius);
+	padding: 10px 14px;
+	font-family: Menlo, Consolas, 'Courier New', monospace;
+	font-size: 12px;
+	line-height: 1.5;
+	white-space: pre;
+	margin: 8px 0 12px;
+	color: var(--jci-text);
+	overflow-x: auto;
+}
+
+/* Severity sample pills (re-uses --sev-* tokens) */
+.jci-help-pill {
+	display: inline-block;
+	border-radius: 3px;
+	padding: 1px 8px;
+	font-size: 11px;
+	font-weight: 600;
+	letter-spacing: 0.04em;
+	border: 1px solid;
+	color: var(--jci-text);
+}
+.jci-help-pill-critical { background: rgba(var(--sev-critical-rgb), 0.20); border-color: var(--sev-critical); }
+.jci-help-pill-high     { background: rgba(var(--sev-high-rgb),     0.20); border-color: var(--sev-high); }
+.jci-help-pill-medium   { background: rgba(var(--sev-medium-rgb),   0.20); border-color: var(--sev-medium); }
+.jci-help-pill-low      { background: rgba(var(--sev-low-rgb),      0.20); border-color: var(--sev-low); }
+.jci-help-pill-normal   { background: rgba(var(--sev-normal-rgb),   0.20); border-color: var(--sev-normal); }
+
+/* Embedded screenshots */
+.jci-help-img {
+	display: block;
+	max-width: 100%;
+	height: auto;
+	margin: 12px 0 6px;
+	border: 1px solid var(--jci-border);
+	border-radius: var(--jci-radius);
+	box-shadow: 0 1px 3px rgba(15,23,42,0.06);
+}
+.jci-help-img-narrow { max-width: 360px; }
+/* Crop-to-top for tall full-page screenshots */
+.jci-help-img-crop {
+	max-height: 240px;
+	object-fit: cover;
+	object-position: top center;
+	width: 100%;
+}
+.jci-help-img-login { max-width: 540px; }
+
+/* ============================================================ */
+/* Branding-edit modal (admin only).                              */
+/* ============================================================ */
+/* Width pinned on both .modal (BS2 fallback) and .modal-dialog (BS3) so
+   the dialog doesn't fall back to a wider default in either stack.
+   margin-left = -width/2 keeps the BS2-positioned variant centred. */
+.jci-branding-modal.modal,
+.jci-branding-modal .modal-dialog { width: 440px !important; }
+.jci-branding-modal.modal { margin-left: -220px !important; left: 50% !important; }
+.jci-branding-modal .modal-content { width: 100% !important; box-sizing: border-box; }
+.jci-branding-modal .modal-body { padding: 16px 20px; }
+.jci-branding-modal .form-control { width: 100%; box-sizing: border-box; }
+.jci-branding-modal .modal-title i.mdi { margin-right: 6px; color: var(--jci-text-muted); }
+.jci-branding-modal .form-group { margin-bottom: 18px; }
+.jci-branding-modal label { font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--jci-section-label); margin-bottom: 6px; display: block; }
+.jci-branding-modal .help-block { font-size: 11px; color: var(--jci-text-soft); margin: 6px 0 8px; }
+.jci-branding-preview {
+	border: 1px dashed var(--jci-border-strong);
+	border-radius: var(--jci-radius);
+	background: var(--jci-page);
+	min-height: 80px;
+	padding: 12px;
+	margin-bottom: 8px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.jci-branding-preview img {
+	max-height: 60px;
+	max-width: 100%;
+	object-fit: contain;
+}
+.jci-branding-empty { color: var(--jci-text-soft); font-style: italic; font-size: 12px; }
+.jci-branding-msg {
+	display: none;
+	padding: 8px 10px;
+	border-radius: var(--jci-radius);
+	font-size: 13px;
+	margin-top: 4px;
+}
+.jci-branding-msg-error { background: rgba(var(--sev-critical-rgb), 0.12); color: var(--sev-critical); border: 1px solid rgba(var(--sev-critical-rgb), 0.4); }
+.jci-branding-msg-ok    { background: rgba(76, 184, 99, 0.12);             color: var(--jci-success); border: 1px solid rgba(76, 184, 99, 0.4); }
+
+/* ============================================================ */
+/* Manage modal — global breathing room.                          */
+/* The native template renders the form / permission table flush */
+/* against the top tab-strip. Add 10px top padding on every      */
+/* tab-content so the body never sits tight against the strip.   */
+/* Applies to outer (Permissions/Accounts/Create/Session/AuthKey)*/
+/* AND inner (per-user) tab-content panes.                        */
+/* ============================================================ */
+#accountManagementModal .modal-body .tab-content { padding-top: 10px; }
+
+/* ============================================================ */
+/* Manage modal — per-user feature flags section.                */
+/* Three checkboxes injected by alarmdb.php / trend.php /        */
+/* graphic.php into account_details_tpl.                          */
+/* ============================================================ */
+.jci-perms-group { border-top: 1px solid var(--jci-border); padding-top: 10px; margin-top: 10px; }
+.jci-perms-group label.jci-perms-section-label {
+	display: block;
+	font-size: 11px;
+	font-weight: 600;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+	color: var(--jci-section-label);
+	margin-bottom: 6px;
+}
+.jci-perms-group .controls > label {
+	display: block;
+	margin: 4px 0;
+	font-weight: 400;
+}
+.jci-perms-group .controls > label > input[type="checkbox"] {
+	margin-right: 6px;
+}

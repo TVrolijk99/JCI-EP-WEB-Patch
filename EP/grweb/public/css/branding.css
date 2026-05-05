@@ -1,0 +1,29 @@
+/*
+ * JCI-EP-WEB-Patch — CSS entry-point: importeert MDI + jci-theme.
+ * Copyright (C) 2026 Dymotica B.V. <info@dymotica.nl>
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * ----
+ * Tiny remnant — laadt alleen de twee legacy header-tweaks.
+ *
+ * mdi-icons.css en jci-theme.css worden NIET meer via @import geladen
+ * (die @imports krijgen geen cache-buster van A() en bleven daardoor
+ * stug op een oude versie hangen na een upload). Beide files worden
+ * direct met `<link>` ingeladen door graphic.php / alarmdb.php /
+ * trend.php / signin.php.
+ */
+
+/* Legacy hooks the original patch relied on */
+#header_panel { background-color: #fff; border-bottom: 0; }
+#logo { width: 200px; height: 70%; margin: 0 16px; }

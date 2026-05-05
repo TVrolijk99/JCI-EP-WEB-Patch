@@ -1,0 +1,39 @@
+/*
+ * JCI-EP-WEB-Patch — sign-in pagina tweaks (rest leeft in jci-theme.css).
+ * Copyright (C) 2026 Dymotica B.V. <info@dymotica.nl>
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+/* Position the language picker top-right of the JCI sign-in pane */
+#languages {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  z-index: 10;
+}
+#languages select {
+  width: 140px;
+  height: 30px;
+  border-radius: 6px;
+  border: 1px solid var(--jci-border, #e5e7eb);
+  background: #fff;
+  font-size: 12px;
+}
+
+/* Defensive: hide the legacy Yellowsnow installer credit if it ever renders */
+.profile-name-installer,
+.profile-name-version,
+.profile-name-card,
+.profile-img-card { display: none !important; }
