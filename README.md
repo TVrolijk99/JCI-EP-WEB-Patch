@@ -12,6 +12,7 @@ native graphic-editor en plugin-flow van JCI te breken.
 - [Wat zit er in deze patch](#wat-zit-er-in-deze-patch)
 - [Compatibiliteit](#compatibiliteit)
 - [Installatie](#installatie)
+- [Gebruik] (#gebruik)
 - [Updaten](#updaten)
 - [Backup &amp; restore](#backup--restore)
 - [Disclaimer](#disclaimer)
