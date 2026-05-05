@@ -13,7 +13,6 @@ native graphic-editor en plugin-flow van JCI te breken.
 - [Compatibiliteit](#compatibiliteit)
 - [Installatie](#installatie)
 - [Updaten](#updaten)
-- [Configuratie](#configuratie)
 - [Backup &amp; restore](#backup--restore)
 - [Disclaimer](#disclaimer)
 - [Licentie](#licentie)
@@ -81,33 +80,18 @@ native graphic-editor en plugin-flow van JCI te breken.
 4. Log in op de webinterface zoals voorheen. Het standaard `admin`
    account werkt ongewijzigd.
 
+## Gebruik
+
+Zie na full deploy de "Help" knop rechts boven voor het juiste gebruik van de alarm manager, trend widgets en spaces three.
+
 ## Updaten
 
 Een nieuwe patch-versie is altijd een **complete drop-in van de
-`EP/`-tree**. Geen migraties, geen scripts. Bestaande config in
-`app/grdata/` wordt niet aangeraakt &mdash; trend-eenheden,
-patch-permissies en topbar-branding blijven behouden.
-
-Bump-locatie van het versienummer is `app/jci_patch_version.php`.
-
-## Configuratie
-
-Per-installatie state staat in `app/grdata/`:
-
-| Bestand | Inhoud |
-|---|---|
-| `trend_config.json` | Per-trendtabel: zichtbare punten, eenheden, state-teksten |
-| `user_perms.json` | Patch-permissies per user (alarm_ack / alarm_delete / trend_edit) |
-| `branding.json` | Topbar-titel + logo-bestandsnaam |
-| `branding_logo.<ext>` | Geüploade logo-afbeelding |
-
-Deze map valt binnen de whitelist van de native firmware-backup, dus
-alle patch-instellingen reizen automatisch mee in een controller-backup.
+`EP/`-tree**. Geen migraties, geen scripts. 
 
 ## Backup &amp; restore
 
-Gebruik de bestaande JCI Utilities &rarr; *Backup* / *Restore*. De
-patch overlayt zonder eigen backup-logica te introduceren. Restore op
+Gebruik de bestaande JCI Utilities *Backup* / *Restore*. Restore op
 een andere controller herstelt zowel graphics als alle
 patch-configuratie.
 
